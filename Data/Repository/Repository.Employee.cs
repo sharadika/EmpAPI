@@ -10,13 +10,14 @@ namespace Data.Repository
 {
     public partial class Repository
     {
-        public void CreateEmployee(EmployeeDto employee)
+        public EmployeeDto CreateEmployee(EmployeeDto employee)
         {
             var addEmp = _mapper.Map<Employee>(employee);
             try
             {
                 _Context.Employees.Add(addEmp);
                 _Context.SaveChanges();
+                return employee;
             }
             catch (Exception ex)
             {
@@ -24,7 +25,7 @@ namespace Data.Repository
             }
         }
 
-        public void DeleteEmployee(int employeeId)
+        public int DeleteEmployee(int employeeId)
         {
             try
             {
@@ -38,7 +39,8 @@ namespace Data.Repository
                 {
                     employee.IsDeleted = true;
                     _Context.Employees.Update(employee);
-                    _Context.SaveChanges();
+                    int deleted = _Context.SaveChanges();
+                    return deleted;
                 }
             }
             catch (Exception ex)
@@ -76,7 +78,7 @@ namespace Data.Repository
             }
         }
 
-        public void UpdateEmployee(EmployeeDto employee)
+        public int UpdateEmployee(EmployeeDto employee)
         {
             try
             {
@@ -89,13 +91,15 @@ namespace Data.Repository
                 {
                     existingEmployee.FirstName = employee.FirstName;
                     existingEmployee.LastName = employee.LastName;
+                    existingEmployee.ContactNo = employee.ContactNo;
                     existingEmployee.City = employee.City;
                     existingEmployee.DepartmentId = employee.DepartmentId;
                     existingEmployee.UpdatedBy = employee.UpdatedBy;
                     existingEmployee.UpdatedOn = DateTime.UtcNow;
 
                     _Context.Employees.Update(existingEmployee);
-                    _Context.SaveChanges();
+                    int updated = _Context.SaveChanges();
+                    return updated;
                 }
             }
             catch (Exception ex)

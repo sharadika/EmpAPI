@@ -13,11 +13,11 @@ namespace Business.Manager
         {
             _repository = repository;
         }
-        public void CreateEmployee(EmployeeDto employee)
+        public EmployeeDto CreateEmployee(EmployeeDto employee)
         {
             try
             {
-                _repository.CreateEmployee(employee);
+                return _repository.CreateEmployee(employee);
             }
             catch (Exception ex)
             {
@@ -25,11 +25,11 @@ namespace Business.Manager
             }
         }
 
-        public void DeleteEmployee(int employeeId)
+        public int DeleteEmployee(int employeeId)
         {
             try
             {
-                _repository.DeleteEmployee(employeeId);
+                return _repository.DeleteEmployee(employeeId);
             }
             catch (Exception ex)
             {
@@ -62,11 +62,11 @@ namespace Business.Manager
             }
         }
 
-        public void UpdateEmployee(EmployeeDto employee)
+        public int UpdateEmployee(EmployeeDto employee)
         {
             try
             {
-                _repository.UpdateEmployee(employee);
+                return _repository.UpdateEmployee(employee);
             }
             catch (Exception ex)
             {

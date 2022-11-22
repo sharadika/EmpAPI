@@ -57,24 +57,45 @@ namespace EmployeeAPI.Controllers
         //[Route("api/Employees/{Id}")]
         public IActionResult DeleteEmployee(int id)
         {
-            _employeeManager.DeleteEmployee(id);
-            return Ok();
+            var response = _employeeManager.DeleteEmployee(id);
+            if (response > 0)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPost]
         //[Route("api/Employees")]
         public IActionResult CreateEmployee([FromBody] EmployeeDto employee)
         {
-            _employeeManager.CreateEmployee(employee);
-            return Ok();
+            var response = _employeeManager.CreateEmployee(employee);
+            if (response != null)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPut("{id}")]
         //[Route("api/Employees/{Id}")]
         public IActionResult Updatemployee([FromBody] EmployeeDto employee)
         {
-            _employeeManager.UpdateEmployee(employee);
-            return Ok();
+            var response = _employeeManager.UpdateEmployee(employee);
+            if (response > 0)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         [HttpGet("{id}/departments")]

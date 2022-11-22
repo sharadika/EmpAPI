@@ -7,8 +7,10 @@ using System.Text;
 
 namespace Data.Models
 {
+    [Table("Department")]
     public class Department : BaseEntity
     {
+        [Required(ErrorMessage = "Department Name is required")]
         [Column("department_name")]
         public string DepartmentName { get; set; }
 

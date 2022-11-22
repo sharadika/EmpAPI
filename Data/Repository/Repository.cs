@@ -11,6 +11,7 @@ namespace Data.Repository
     {
         private readonly EmployeeContext _Context;
         private readonly IMapper _mapper;
+
         public Repository(EmployeeContext context, IMapper mapper)
         {
             _Context = context;

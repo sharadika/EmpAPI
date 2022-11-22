@@ -25,19 +25,19 @@ namespace Data.Repository
         /// Create new Employee
         /// </summary>
         /// <param name="employee"></param>
-        void CreateEmployee(EmployeeDto employee);
+        EmployeeDto CreateEmployee(EmployeeDto employee);
 
         /// <summary>
         /// Update Employee
         /// </summary>
         /// <param name="employee"></param>
-        void UpdateEmployee(EmployeeDto employee);
+        int UpdateEmployee(EmployeeDto employee);
 
         /// <summary>
         /// Delete Employee
         /// </summary>
         /// <param name="employeeId"></param>
-        void DeleteEmployee(int employeeId);
+        int DeleteEmployee(int employeeId);
 
         /// <summary>
         /// Get EmployeeList By DepartmentId
