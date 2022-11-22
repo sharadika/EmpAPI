@@ -18,7 +18,12 @@ namespace UnitTest
                 LastName = "Doe",
                 ContactNo = "0716163291",
                 City ="Washington",
-                DepartmentId = 1
+                DepartmentId = 1,
+                IsDeleted = false,
+                CreatedBy = 1001,
+                CreatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000"),
+                UpdatedBy = 1002,
+                UpdatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000")
             },
             new EmployeeDto
             {
@@ -27,7 +32,12 @@ namespace UnitTest
                 LastName = "Smith",
                 ContactNo = "0716163292",
                 City ="New York",
-                DepartmentId = 2
+                DepartmentId = 2,
+                IsDeleted = false,
+                CreatedBy = 1001,
+                CreatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000"),
+                UpdatedBy = 1002,
+                UpdatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000")
             },
             new EmployeeDto
             {
@@ -36,7 +46,12 @@ namespace UnitTest
                 LastName = "Moulder",
                 ContactNo = "0716163293",
                 City ="LA",
-                DepartmentId = 3
+                DepartmentId = 3,
+                IsDeleted = false,
+                CreatedBy = 1001,
+                CreatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000"),
+                UpdatedBy = 1002,
+                UpdatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000")
             }
         };
             return output;
@@ -49,17 +64,32 @@ namespace UnitTest
             new DepartmentDto
             {
                 Id = 1,
-                DepartmentName = "IT"
+                DepartmentName = "IT",
+                IsDeleted = false,
+                CreatedBy = 1001,
+                CreatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000"),
+                UpdatedBy = 1002,
+                UpdatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000")
             },
             new DepartmentDto
             {
                 Id = 2,
-                DepartmentName = "HR"
+                DepartmentName = "HR",
+                IsDeleted = false,
+                CreatedBy = 1001,
+                CreatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000"),
+                UpdatedBy = 1002,
+                UpdatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000")
             },
             new DepartmentDto
             {
                 Id = 3,
-                DepartmentName = "Finance"
+                DepartmentName = "Finance",
+                IsDeleted = false,
+                CreatedBy = 1001,
+                CreatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000"),
+                UpdatedBy = 1002,
+                UpdatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000")
             }
         };
             return output;

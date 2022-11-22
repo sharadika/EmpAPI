@@ -17,6 +17,7 @@ namespace UnitTest.RepositoryTest
         private readonly IMapper _mapper;
         private EmployeeContext _empContext;
         private Repository _repository;
+        private TestData testData = new TestData();
         public TestEmployeeRepository()
         {
             _dbOptions = new DbContextOptionsBuilder<EmployeeContext>()
@@ -35,39 +36,25 @@ namespace UnitTest.RepositoryTest
             _empContext = new EmployeeContext(_dbOptions);
             _repository = new Repository(_empContext, _mapper);
 
-            for (int i = 1; i < 4; i++)
+            var empList = testData.GetSampleEmployee();
+            var depList = testData.GetSampleDepartment();
+
+            //Add Employee List
+            for (int i = 0; i < empList.Count; i++)
             {
-                var newEmp = new Employee()
-                {
-                    Id = i,
-                    CreatedBy = 1001,
-                    CreatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000"),
-                    UpdatedBy = 1002,
-                    UpdatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000"),
-                    FirstName = "Micheal" + i,
-                    LastName = "Bruce",
-                    City = "Rome",
-                    ContactNo = "0716163291",
-                    IsDeleted = false,
-                    DepartmentId = 1
-                };
+                var newEmp = _mapper.Map<Employee>(empList[i]);
 
                 _empContext.Employees.Add(newEmp);
                 _empContext.SaveChanges();
             }
 
-            var newDep = new Department()
+            //Add Department List
+            for (int i = 0; i < depList.Count; i++)
             {
-                Id = 1,
-                CreatedBy = 1001,
-                CreatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000"),
-                UpdatedBy = 1002,
-                UpdatedOn = DateTime.Parse("2022-04-05 00:00:00.0000000"),
-                IsDeleted = false,
-                DepartmentName = "IT"
-            };
-            _empContext.Departments.Add(newDep);
-            _empContext.SaveChanges();
+                var newDep = _mapper.Map<Department>(depList[i]);
+                _empContext.Departments.Add(newDep);
+                _empContext.SaveChanges();
+            }
         }
 
         [Fact()]
@@ -89,7 +76,7 @@ namespace UnitTest.RepositoryTest
                 City = "Rome",
                 ContactNo = "0716163291",
                 IsDeleted = false,
-                DepartmentId = 1
+                DepartmentId = 10
             };
 
             // Act
